@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nisan & Batur Amanah - Layanan Pembuatan Batu Nisan & Makam</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Cinzel & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        gold: {
+                            DEFAULT: '#C5A059',
+                            light: '#E6CA85',
+                            dark: '#9A7B39',
+                        },
+                        charcoal: {
+                            900: '#121316',
+                            800: '#1A1C20',
+                            700: '#262930',
+                            600: '#343842'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-padding-top: 6rem;
+        }
+        section[id] {
+            scroll-margin-top: 6rem;
+        }
+        :focus-visible {
+            outline: 3px solid #E6CA85;
+            outline-offset: 3px;
+        }
+        .skip-link {
+            position: fixed;
+            top: 0.75rem;
+            left: 0.75rem;
+            z-index: 100;
+            transform: translateY(-150%);
+        }
+        .skip-link:focus {
+            transform: translateY(0);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #E6CA85 0%, #C5A059 50%, #9A7B39 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-border {
+            border-color: #C5A059;
+        }
+        .gold-bg {
+            background-color: #C5A059;
+        }
+        .gold-bg:hover {
+            background-color: #B38F48;
+        }
+    </style>
+</head>
+<body class="bg-charcoal-900 text-slate-200 font-sans antialiased selection:bg-gold selection:text-charcoal-900">
+
+    <a href="#main-content" class="skip-link rounded-md gold-bg px-4 py-3 font-bold text-charcoal-900">Lewati ke isi utama</a>
+
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-charcoal-900/90 backdrop-blur-md border-b border-charcoal-700 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-3 group">
+                    <div class="w-10 h-10 rounded-full border-2 border-gold/80 flex items-center justify-center bg-charcoal-800 text-gold group-hover:border-gold transition-colors">
+                        <i class="fa-solid font-cinzel text-lg font-bold">A</i>
+                    </div>
+                    <div>
+                        <span class="font-cinzel text-xl sm:text-2xl font-bold tracking-wider gold-gradient-text block">NISAN & BATUR</span>
+                        <span class="text-[10px] tracking-widest text-slate-400 font-medium block uppercase -mt-1">Amanah & Khidmat</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav aria-label="Navigasi utama" class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                    <a href="#beranda" class="text-slate-300 hover:text-gold transition-colors">Beranda</a>
+                    <a href="#keunggulan" class="text-slate-300 hover:text-gold transition-colors">Keunggulan</a>
+                    <a href="#katalog" class="text-slate-300 hover:text-gold transition-colors">Katalog & Produk</a>
+                    <a href="#galeri" class="text-slate-300 hover:text-gold transition-colors">Galeri</a>
+                    <a href="#pemesanan" class="text-slate-300 hover:text-gold transition-colors">Pemesanan</a>
+                </nav>
+
+                <!-- CTA Header -->
+                <div class="hidden md:flex items-center">
+                    <a href="https://wa.me/6281347384598?text=Halo%20Nisan%20%26%20Batur%20Amanah,%20saya%20ingin%20konsultasi%20pembuatan%20nisan/batur." target="_blank" class="px-4 py-2.5 rounded-lg border border-gold/50 text-gold hover:bg-gold hover:text-charcoal-900 font-semibold text-sm transition-all duration-300 flex items-center space-x-2 shadow-lg shadow-gold/5">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>Hubungi Kami</span>
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" type="button" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="mobile-menu" class="text-slate-300 hover:text-white p-2 rounded-lg focus:outline-none min-h-11 min-w-11">
+                        <i class="fa-solid fa-bars text-2xl" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <nav id="mobile-menu" aria-label="Navigasi ponsel" class="hidden md:hidden bg-charcoal-800 border-b border-charcoal-700 px-4 pt-2 pb-6 space-y-3">
+            <a href="#beranda" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-charcoal-700 hover:text-gold">Beranda</a>
+            <a href="#keunggulan" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-charcoal-700 hover:text-gold">Keunggulan</a>
+            <a href="#katalog" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-charcoal-700 hover:text-gold">Katalog & Produk</a>
+            <a href="#galeri" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-charcoal-700 hover:text-gold">Galeri</a>
+            <a href="#pemesanan" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-charcoal-700 hover:text-gold">Pemesanan</a>
+            <a href="https://wa.me/6281347384598?text=Halo%20Nisan%20%26%20Batur%20Amanah,%20saya%20ingin%20konsultasi%20pembuatan%20nisan/batur." target="_blank" class="w-full mt-2 text-center px-4 py-2.5 rounded-lg gold-bg text-charcoal-900 font-bold text-sm flex items-center justify-center space-x-2">
+                <i class="fa-brands fa-whatsapp text-lg"></i>
+                <span>Konsultasi WhatsApp</span>
+            </a>
+        </nav>
+    </header>
+
+    <main id="main-content">
+    <!-- Hero Section -->
+    <section id="beranda" class="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden bg-gradient-to-b from-charcoal-900 via-charcoal-800 to-charcoal-900">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#C5A059_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full border border-gold/30 bg-gold/10 text-gold text-xs sm:text-sm font-medium mb-6">
+                <i class="fa-solid fa-award"></i>
+                <span>Kerajinan Berpengalaman & Tahan Lama</span>
+            </div>
+
+            <h1 class="font-cinzel text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate-100 max-w-4xl mx-auto leading-tight mb-6">
+                Batu Nisan & Batur Makam <span class="gold-gradient-text">Rapi dan Tahan Lama</span>
+            </h1>
+
+            <p class="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto mb-10 font-light leading-relaxed">
+                Pilih produk di katalog untuk melihat perkiraan harga, atau hubungi kami untuk bertanya dan menyesuaikan desain.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="https://wa.me/6281347384598?text=Halo%20Nisan%20%26%20Batur%20Amanah,%20saya%20ingin%20konsultasi%20pembuatan%20nisan/batur." target="_blank" class="w-full sm:w-auto px-8 py-3.5 rounded-lg gold-bg text-charcoal-900 font-bold hover:shadow-lg hover:shadow-gold/20 transition-all duration-300 flex items-center justify-center space-x-3">
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                    <span>Konsultasi via WhatsApp</span>
+                </a>
+                <a href="#katalog" class="w-full sm:w-auto px-8 py-3.5 rounded-lg border border-slate-600 hover:border-gold text-slate-200 hover:text-gold transition-all duration-300 flex items-center justify-center space-x-2 bg-charcoal-800/50">
+                    <span>Lihat Katalog Produk</span>
+                    <i class="fa-solid fa-arrow-down text-sm"></i>
+                </a>
+            </div>
+
+            <!-- Quick Stats/Features Badge -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 border-t border-charcoal-700/60 pt-8 max-w-4xl mx-auto text-center">
+                <div class="p-3">
+                    <p class="text-gold font-cinzel text-2xl font-bold">100%</p>
+                    <p class="text-xs text-slate-400 mt-1">Bahan Pilihan Premium</p>
+                </div>
+                <div class="p-3">
+                    <p class="text-gold font-cinzel text-2xl font-bold">Presisi</p>
+                    <p class="text-xs text-slate-400 mt-1">Grafir/Ukir Detail</p>
+                </div>
+                <div class="p-3">
+                    <p class="text-gold font-cinzel text-2xl font-bold">Custom</p>
+                    <p class="text-xs text-slate-400 mt-1">Desain & Ukuran Bebas</p>
+                </div>
+                <div class="p-3">
+                    <p class="text-gold font-cinzel text-2xl font-bold">Amanah</p>
+                    <p class="text-xs text-slate-400 mt-1">Pengerjaan Tepat Waktu</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Keunggulan Usaha Section -->
+    <section id="keunggulan" class="py-20 bg-charcoal-800 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-cinzel text-2xl sm:text-4xl font-bold text-slate-100 mb-3">Mengapa Memilih Kami?</h2>
+                <div class="w-20 h-1 gold-bg mx-auto rounded-full mb-4"></div>
+                <p class="text-slate-400 max-w-xl mx-auto text-sm sm:text-base">Komitmen kami dalam memberikan dedikasi terbaik untuk tempat peristirahatan terakhir yang rapi, kokoh, dan penuh kehormatan.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Item 1 -->
+                <div class="bg-charcoal-900/80 p-6 rounded-xl border border-charcoal-700 hover:border-gold/50 transition-all duration-300 hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-lg bg-gold/10 border border-gold/30 flex items-center justify-center text-gold text-xl mb-5">
+                        <i class="fa-solid fa-pen-nib"></i>
+                    </div>
+                    <h3 class="font-cinzel text-lg font-bold text-slate-100 mb-2">Pengerjaan Rapi & Presisi</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Ukiran kaligrafi, nama, dan tanggal dikerjakan secara detail, rapi, dan terbaca jelas dengan teknik pahat/grafir profesional.
+                    </p>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="bg-charcoal-900/80 p-6 rounded-xl border border-charcoal-700 hover:border-gold/50 transition-all duration-300 hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-lg bg-gold/10 border border-gold/30 flex items-center justify-center text-gold text-xl mb-5">
+                        <i class="fa-solid fa-gem"></i>
+                    </div>
+                    <h3 class="font-cinzel text-lg font-bold text-slate-100 mb-2">Bahan Material Berkualitas</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Menggunakan Kayu Ulin Kalimantan asli yang tahan cuaca/air, Granit Hitam murni, Keramik presisi, serta Batu Alam kokoh.
+                    </p>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="bg-charcoal-900/80 p-6 rounded-xl border border-charcoal-700 hover:border-gold/50 transition-all duration-300 hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-lg bg-gold/10 border border-gold/30 flex items-center justify-center text-gold text-xl mb-5">
+                        <i class="fa-solid fa-handshake"></i>
+                    </div>
+                    <h3 class="font-cinzel text-lg font-bold text-slate-100 mb-2">Amanah & Tepat Waktu</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Proses pengerjaan sesuai dengan estimasi kesepakatan bersama, dengan pelaporan progress berkala secara transparan.
+                    </p>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="bg-charcoal-900/80 p-6 rounded-xl border border-charcoal-700 hover:border-gold/50 transition-all duration-300 hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-lg bg-gold/10 border border-gold/30 flex items-center justify-center text-gold text-xl mb-5">
+                        <i class="fa-solid fa-ruler-combined"></i>
+                    </div>
+                    <h3 class="font-cinzel text-lg font-bold text-slate-100 mb-2">Bisa Custom Desain</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Menerima permintaan custom bentuk, tata letak tulisan, ayat suci, hingga penyesuaian ukuran lahan tempat pemakaman.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Katalog Produk & Layanan Section -->
+    <section id="katalog" class="py-20 bg-charcoal-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-cinzel text-2xl sm:text-4xl font-bold text-slate-100 mb-3">Katalog & Layanan</h2>
+                <div class="w-20 h-1 gold-bg mx-auto rounded-full mb-4"></div>
+                <p class="text-slate-400 max-w-xl mx-auto text-sm sm:text-base">Pilihan ragam produk Nisan, Batur/Kijing Makam, serta layanan renovasi berkualitas tinggi.</p>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div role="group" aria-label="Filter katalog" class="flex flex-wrap justify-center gap-2 mb-10">
+                <button type="button" aria-pressed="true" onclick="filterCatalog('all')" class="tab-btn active px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 border border-gold bg-gold text-charcoal-900 font-bold" data-category="all">Semua</button>
+                <button type="button" aria-pressed="false" onclick="filterCatalog('nisan')" class="tab-btn px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 border border-charcoal-700 bg-charcoal-800 text-slate-300 hover:border-gold/50" data-category="nisan">Batu Nisan</button>
+                <button type="button" aria-pressed="false" onclick="filterCatalog('batur')" class="tab-btn px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 border border-charcoal-700 bg-charcoal-800 text-slate-300 hover:border-gold/50" data-category="batur">Batur / Kijing</button>
+                <button type="button" aria-pressed="false" onclick="filterCatalog('renovasi')" class="tab-btn px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 border border-charcoal-700 bg-charcoal-800 text-slate-300 hover:border-gold/50" data-category="renovasi">Renovasi & Perbaikan</button>
+            </div>
+            <p id="catalog-status" class="sr-only" aria-live="polite"></p>
+
+            <!-- Product Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="catalog-grid">
+                
+                <!-- Product 1: Nisan Granit -->
+                <div class="catalog-item nisan bg-charcoal-800 rounded-xl overflow-hidden border border-charcoal-700 hover:border-gold/50 transition-all duration-300 flex flex-col">
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <span class="self-end bg-charcoal-900/80 text-gold text-xs px-3 py-1 rounded-full font-medium border border-gold/30 mb-4">Bahan Granit</span>
+                        <div>
+                            <h3 class="font-cinzel text-xl font-bold text-slate-100 mb-2">Nisan Buku / Standar Granit Black Gold</h3>
+                            <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                                Ukiran grafir emas presisi. Tahan terhadap panas dan hujan tanpa pudar. Cocok untuk semua makam.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-charcoal-700 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-slate-400 block">Estimasi Harga</span>
+                                <span class="text-gold font-bold text-lg">-</span>
+                            </div>
+                            <a href="https://wa.me/6281347384598?text=Halo%20Nisan%20%26%20Batur%20Amanah,%20saya%20tertarik%20tanya%20produk:%20Nisan%20Granit%20Black%20Gold" target="_blank" class="px-3.5 py-2 rounded-lg bg-charcoal-700 hover:bg-gold hover:text-charcoal-900 text-slate-200 text-xs font-semibold transition-all">
+                                Pesan Ini
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2: Nisan Kayu Ulin -->
+                <div class="catalog-item nisan bg-charcoal-800 rounded-xl overflow-hidden border border-charcoal-700 hover:border-gold/50 transition-all duration-300 flex flex-col">
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <span class="self-end bg-charcoal-900/80 text-gold text-xs px-3 py-1 rounded-full font-medium border border-gold/30 mb-4">Kayu Ulin Asli</span>
+                        <div>
+                            <h3 class="font-cinzel text-xl font-bold text-slate-100 mb-2">Nisan Ukir Kayu Ulin Pilihan</h3>
+                            <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                                Kayu Besi (Ulin) tua berkekuatan puluhan tahun. Pahat ukir nama tradisional yang sangat kokoh & alami.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-charcoal-700 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-slate-400 block">Estimasi Harga</span>
+                                <span class="text-gold font-bold text-lg">-</span>
+                            </div>
+                            <a href="https://wa.me/6281347384598?text=Halo%20Nisan%20%26%20Batur%20Amanah,%20saya%20tertarik%20tanya%20produk:%20Nisan%20Kayu%20Ulin" target="_blank" class="px-3.5 py-2 rounded-lg bg-charcoal-700 hover:bg-gold hover:text-charcoal-900 text-slate-200 text-xs font-semibold transition-all">
+                                Pesan Ini
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3: Batur Granite Full -->
+                <div class="catalog-item batur bg-charcoal-800 rounded-xl overflow-hidden border border-charcoal-700 hover:border-gold/50 transition-all duration-300 flex flex-col">
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <span class="self-end bg-charcoal-900/80 text-gold text-xs px-3 py-1 rounded-full font-medium border border-gold/30 mb-4">Batur Makam</span>
+                        <div>
+                            <h3 class="font-cinzel text-xl font-bold text-slate-100 mb-2">Batur/Kijing Makam Full Granit Premium</h3>
+                            <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                                Model minimalis mewah tingkat dua dengan pondasi kokoh & pelapis granit mulus terlindungi rapi.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-charcoal-700 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-slate-400 block">Estimasi Harga</span>
+                                <span class="text-gold font-bold text-lg">-</span>
+                            </div>
+                            <a href="https://wa.me/6281347384598?text=Halo%20Nisan%20%26%20Batur%20Amanah,%20saya%20tertarik%20tanya%20produk:%20Batur%20Full%20Granit" target="_blank" class="px-3.5 py-2 rounded-lg bg-charcoal-700 hover:bg-gold hover:text-charcoal-900 text-slate-200 text-xs font-semibold transition-all">
+                                Pesan Ini
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4: Batur Kayu Ulin Minimalis -->
+                <div class="catalog-item batur bg-charcoal-800 rounded-xl overflow-hidden border border-charcoal-700 hover:border-gold/50 transition-all duration-300 flex flex-col">
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <span class="self-end bg-charcoal-900/80 text-gold text-xs px-3 py-1 rounded-full font-medium border border-gold/30 mb-4">Kayu Ulin</span>
+                        <div>
+                            <h3 class="font-cinzel text-xl font-bold text-slate-100 mb-2">Batur Makam Kayu Ulin Sederhana</h3>
+                            <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                                Pagar/Batur pembatas dari bahan kayu Ulin utuh. Kuat dan memberikan kesan alami serta religius.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-charcoal-700 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-slate-400 block">Estimasi Harga</span>
+                                <span class="text-gold font-bold text-lg">-</span>
+                            </div>
+                            <a href="https://wa.me/6281347384598?text=Halo%20Nisan%20%26%20Batur%20Amanah,%20saya%20tertarik%20tanya%20produk:%20Batur%20Kayu%20Ulin" target="_blank" class="px-3.5 py-2 rounded-lg bg-charcoal-700 hover:bg-gold hover:text-charcoal-900 text-slate-200 text-xs font-semibold transition-all">
+                                Pesan Ini
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5: Nisan Keramik Murah -->
+                <div class="catalog-item nisan bg-charcoal-800 rounded-xl overflow-hidden border border-charcoal-700 hover:border-gold/50 transition-all duration-300 flex flex-col">
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <span class="self-end bg-charcoal-900/80 text-gold text-xs px-3 py-1 rounded-full font-medium border border-gold/30 mb-4">Keramik</span>
+                        <div>
+                            <h3 class="font-cinzel text-xl font-bold text-slate-100 mb-2">Nisan Dudukan Keramik Standard</h3>
+                            <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                                Pilihan terjangkau dengan mutu kerapian baik, tulisan sablon cetak khusus tahan lama.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-charcoal-700 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-slate-400 block">Estimasi Harga</span>
+                                <span class="text-gold font-bold text-lg">-</span>
+                            </div>
+                            <a href="https://wa.me/6281347384598?text=Halo%20Nisan%20%26%20Batur%20Amanah,%20saya%20tertarik%20tanya%20produk:%20Nisan%20Keramik" target="_blank" class="px-3.5 py-2 rounded-lg bg-charcoal-700 hover:bg-gold hover:text-charcoal-900 text-slate-200 text-xs font-semibold transition-all">
+                                Pesan Ini
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6: Renovasi & Perbaikan Makam -->
+                <div class="catalog-item renovasi bg-charcoal-800 rounded-xl overflow-hidden border border-charcoal-700 hover:border-gold/50 transition-all duration-300 flex flex-col">
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <span class="self-end bg-charcoal-900/80 text-gold text-xs px-3 py-1 rounded-full font-medium border border-gold/30 mb-4">Jasa Renovasi</span>
+                        <div>
+                            <h3 class="font-cinzel text-xl font-bold text-slate-100 mb-2">Renovasi, Pengecatan & Pembersihan</h3>
+                            <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                                Jasa perbaikan keretakan, pembersihan jamur batu, re-painting ukiran emas nisan lama agar tampak baru kembali.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-charcoal-700 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-slate-400 block">Estimasi Harga</span>
+                                <span class="text-gold font-bold text-lg">-</span>
+                            </div>
+                            <a href="https://wa.me/6281347384598?text=Halo%20Nisan%20%26%20Batur%20Amanah,%20saya%20ingin%20konsultasi%20jasa%20renovasi/perbaikan%20makam." target="_blank" class="px-3.5 py-2 rounded-lg bg-charcoal-700 hover:bg-gold hover:text-charcoal-900 text-slate-200 text-xs font-semibold transition-all">
+                                Tanya Jasa
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeri Portofolio Section -->
+    <section id="galeri" class="py-20 bg-charcoal-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-cinzel text-2xl sm:text-4xl font-bold text-slate-100 mb-3">Galeri Hasil Pengerjaan</h2>
+                <div class="w-20 h-1 gold-bg mx-auto rounded-full mb-4"></div>
+                <p class="text-slate-400 max-w-xl mx-auto text-sm sm:text-base">Foto pengerjaan yang tersedia di profil Google Maps kami.</p>
+            </div>
+
+            <!-- Grid Galeri -->
+            <div class="grid grid-cols-1 max-w-md mx-auto gap-4">
+                <!-- Gallery 1 -->
+                <div role="button" tabindex="0" aria-label="Perbesar foto: Pengerjaan nisan di bengkel" data-gallery-trigger class="relative group cursor-pointer overflow-hidden rounded-lg aspect-[4/5] bg-charcoal-900" onclick="openModal('https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Ri2XvpNE_5iGJb61Jja-kGBQBy9GOuZ9HIP6fpFr9sAzBwIRzUlz2_NKNQ0JawLbNTwcdL_PyE-E7apsnJ6SYb2tg0kwN-ukSfoBNc761OHdP4fyCwWryPDBbiAJA8v1FoF1vJ1IHL4a1W=w408-h725-k-no', 'Pengerjaan nisan makam di bengkel')">
+                    <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Ri2XvpNE_5iGJb61Jja-kGBQBy9GOuZ9HIP6fpFr9sAzBwIRzUlz2_NKNQ0JawLbNTwcdL_PyE-E7apsnJ6SYb2tg0kwN-ukSfoBNc761OHdP4fyCwWryPDBbiAJA8v1FoF1vJ1IHL4a1W=w408-h725-k-no" alt="Seorang pekerja sedang menyelesaikan nisan makam di bengkel" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-charcoal-900/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center p-4 text-center">
+                        <div>
+                            <i class="fa-solid fa-magnifying-glass-plus text-gold text-2xl mb-2"></i>
+                            <p class="text-sm font-semibold text-slate-100">Pengerjaan nisan di bengkel</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="mt-6 text-center">
+                <a href="https://maps.app.goo.gl/3THY5c7gSv7fUX7XA" target="_blank" rel="noopener noreferrer" class="inline-flex min-h-11 items-center justify-center rounded-lg border border-gold/50 px-5 py-3 text-sm font-semibold text-gold hover:bg-gold/10">Lihat foto lainnya di Google Maps</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Lightbox Galeri -->
+    <div id="image-modal" role="dialog" aria-modal="true" aria-labelledby="modal-caption" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex items-center justify-center p-4" onclick="closeModal()">
+        <div class="relative max-w-4xl w-full" onclick="event.stopPropagation()">
+            <button type="button" aria-label="Tutup foto" onclick="closeModal()" class="absolute -top-12 right-0 min-h-11 min-w-11 text-slate-300 hover:text-white text-3xl font-bold">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <img id="modal-img" src="" alt="" class="w-full max-h-[80vh] object-contain rounded-lg border border-charcoal-700">
+            <p id="modal-caption" class="text-center text-slate-300 mt-4 font-cinzel text-base"></p>
+        </div>
+    </div>
+
+    <!-- Form Pemesanan & Konsultasi Section -->
+    <section id="pemesanan" class="py-20 bg-charcoal-900 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-charcoal-800 rounded-2xl p-6 sm:p-10 border border-charcoal-700 shadow-2xl relative overflow-hidden">
+                <div class="absolute -top-24 -right-24 w-48 h-48 bg-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="text-center mb-8">
+                    <h2 class="font-cinzel text-2xl sm:text-3xl font-bold text-slate-100 mb-2">Formulir Pesan / Konsultasi</h2>
+                    <p class="text-slate-300 text-base leading-relaxed">Isi nama dan nomor Anda, pilih jenis pesanan, lalu tekan tombol kirim. Pesan akan dibuka di WhatsApp untuk Anda tinjau.</p>
+                </div>
+
+                <form id="orderForm" onsubmit="sendToWhatsApp(event)" class="space-y-5">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <!-- Nama Pemesan -->
+                        <div>
+                            <label for="buyerName" class="block text-sm font-medium text-slate-200 mb-2">Nama Anda <span aria-hidden="true">*</span></label>
+                            <input type="text" id="buyerName" name="buyerName" autocomplete="name" required placeholder="Contoh: Ahmad" class="w-full bg-charcoal-900 border border-charcoal-700 rounded-lg px-4 py-3 text-base text-slate-100 placeholder-slate-400 focus:outline-none focus:border-gold transition-colors">
+                        </div>
+
+                        <!-- No HP / WA -->
+                        <div>
+                            <label for="buyerPhone" class="block text-sm font-medium text-slate-200 mb-2">Nomor WhatsApp Anda <span aria-hidden="true">*</span></label>
+                            <input type="tel" id="buyerPhone" name="buyerPhone" autocomplete="tel" inputmode="tel" required aria-describedby="phone-help" placeholder="Contoh: 08123456789" class="w-full bg-charcoal-900 border border-charcoal-700 rounded-lg px-4 py-3 text-base text-slate-100 placeholder-slate-400 focus:outline-none focus:border-gold transition-colors">
+                            <p id="phone-help" class="mt-2 text-sm text-slate-300">Gunakan nomor yang bisa dihubungi.</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <!-- Jenis Pesanan -->
+                        <div>
+                            <label for="orderType" class="block text-sm font-medium text-slate-200 mb-2">Apa yang Anda butuhkan? <span aria-hidden="true">*</span></label>
+                            <select id="orderType" name="orderType" required class="w-full bg-charcoal-900 border border-charcoal-700 rounded-lg px-4 py-3 text-base text-slate-100 focus:outline-none focus:border-gold transition-colors">
+                                <option value="Batu Nisan Only">Batu Nisan Saja</option>
+                                <option value="Batur / Kijing Makam">Batur / Kijing Makam</option>
+                                <option value="Paket Nisan + Batur">Paket Nisan + Batur Makam</option>
+                                <option value="Renovasi / Perbaikan">Renovasi / Service Makam</option>
+                            </select>
+                        </div>
+
+                        <!-- Bahan Material -->
+                        <div>
+                            <label for="materialType" class="block text-sm font-medium text-slate-200 mb-2">Pilihan bahan (boleh dilewati)</label>
+                            <select id="materialType" name="materialType" class="w-full bg-charcoal-900 border border-charcoal-700 rounded-lg px-4 py-3 text-base text-slate-100 focus:outline-none focus:border-gold transition-colors">
+                                <option value="Kayu Ulin Kalimantan">Kayu Ulin Kalimantan</option>
+                                <option value="Granit Hitam (Black Gold)">Granit Hitam Premium</option>
+                                <option value="Keramik">Keramik Presisi</option>
+                                <option value="Batu Alam Ukir">Batu Alam Ukir</option>
+                                <option value="Konsultasi Dahulu">Belum Tahu (Konsultasi Dulu)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Catatan Detail (Nama Almarhum, tgl lahir/wafat, dll) -->
+                    <div>
+                        <label for="orderDetails" class="block text-sm font-medium text-slate-200 mb-2">Catatan tambahan (boleh dilewati)</label>
+                        <textarea id="orderDetails" name="orderDetails" rows="4" placeholder="Contoh: nama pada nisan, ukuran, atau permintaan khusus" class="w-full bg-charcoal-900 border border-charcoal-700 rounded-lg px-4 py-3 text-base text-slate-100 placeholder-slate-400 focus:outline-none focus:border-gold transition-colors"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 rounded-lg gold-bg text-charcoal-900 font-bold text-base hover:shadow-lg hover:shadow-gold/20 transition-all duration-300 flex items-center justify-center space-x-2">
+                        <i class="fa-brands fa-whatsapp text-xl"></i>
+                        <span>Kirim Pesanan ke WhatsApp</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-charcoal-950 border-t border-charcoal-700/80 pt-16 pb-12 text-slate-400 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+                <!-- Info Usaha -->
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-8 h-8 rounded-full border border-gold flex items-center justify-center text-gold font-cinzel font-bold">A</div>
+                        <span class="font-cinzel text-xl font-bold gold-gradient-text">Nisan & Batur Amanah</span>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        Layanan profesional pembuatan nisan dan kijing batur makam. Mengutamakan kerapian ukiran, bahan bermutu tinggi, dan pelayanan khidmat tepat waktu.
+                    </p>
+                </div>
+
+                <!-- Kontak & Jam Ops -->
+                <div>
+                    <h3 class="font-cinzel text-slate-100 font-bold text-base mb-4 border-b border-gold/30 pb-2 inline-block">Kontak & Jam Kerja</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start space-x-3">
+                            <i class="fa-brands fa-whatsapp text-gold text-lg mt-0.5"></i>
+                            <span>WhatsApp: <a href="https://wa.me/6281347384598" target="_blank" class="text-slate-200 hover:text-gold">081347384598</a></span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i class="fa-solid fa-clock text-gold text-lg mt-0.5"></i>
+                            <span>Buka 24 jam<br><span class="text-xs text-slate-500">Sesuai informasi di Google Maps</span></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Lokasi & Area Layanan -->
+                <div>
+                    <h3 class="font-cinzel text-slate-100 font-bold text-base mb-4 border-b border-gold/30 pb-2 inline-block">Agen Batu Nisan Rapak Indahh</h3>
+                    <p class="flex items-start space-x-3 text-sm mb-3">
+                        <i class="fa-solid fa-location-dot text-gold text-lg mt-0.5"></i>
+                        <span>Jl. Rapak Indah No. RT 001, Loa Bakung, Kec. Sungai Kunjang, Kota Samarinda, Kalimantan Timur 75126.</span>
+                    </p>
+                    <a href="https://maps.app.goo.gl/3THY5c7gSv7fUX7XA" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-2 text-sm text-gold border border-gold/40 px-3 py-2 rounded hover:bg-gold/10 transition-colors">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                        <span>Lihat lokasi dan rute di Google Maps</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="border-t border-charcoal-800 pt-8 text-center text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p>&copy; 2026 Nisan & Batur Amanah. Hak Cipta Dilindungi.</p>
+                <p>Khidmat, Amanah & Tahan Lama</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // 1. Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        function setMobileMenuOpen(isOpen) {
+            mobileMenu.classList.toggle('hidden', !isOpen);
+            mobileMenuBtn.setAttribute('aria-expanded', String(isOpen));
+            mobileMenuBtn.setAttribute('aria-label', isOpen ? 'Tutup menu navigasi' : 'Buka menu navigasi');
+            menuIcon.classList.toggle('fa-bars', !isOpen);
+            menuIcon.classList.toggle('fa-xmark', isOpen);
+        }
+
+        mobileMenuBtn.addEventListener('click', () => {
+            setMobileMenuOpen(mobileMenu.classList.contains('hidden'));
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                setMobileMenuOpen(false);
+            });
+        });
+
+        // 2. Filter Katalog Produk
+        function filterCatalog(category) {
+            // Update active button state
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => {
+                if (btn.getAttribute('data-category') === category) {
+                    btn.setAttribute('aria-pressed', 'true');
+                    btn.classList.add('bg-gold', 'text-charcoal-900', 'border-gold', 'font-bold');
+                    btn.classList.remove('bg-charcoal-800', 'text-slate-300', 'border-charcoal-700');
+                } else {
+                    btn.setAttribute('aria-pressed', 'false');
+                    btn.classList.remove('bg-gold', 'text-charcoal-900', 'border-gold', 'font-bold');
+                    btn.classList.add('bg-charcoal-800', 'text-slate-300', 'border-charcoal-700');
+                }
+            });
+
+            // Filter items
+            const items = document.querySelectorAll('.catalog-item');
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            const visibleCount = [...items].filter(item => item.style.display !== 'none').length;
+            document.getElementById('catalog-status').textContent = `${visibleCount} produk ditampilkan.`;
+        }
+
+        // 3. Galeri Modal Lightbox
+        let galleryReturnFocus = null;
+        document.querySelectorAll('[data-gallery-trigger]').forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                galleryReturnFocus = trigger;
+            });
+            trigger.addEventListener('keydown', event => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    trigger.click();
+                }
+            });
+        });
+
+        function openModal(imgSrc, caption) {
+            const modal = document.getElementById('image-modal');
+            const modalImg = document.getElementById('modal-img');
+            const modalCaption = document.getElementById('modal-caption');
+
+            modalImg.src = imgSrc;
+            modalCaption.textContent = caption;
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            modal.querySelector('button').focus();
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('image-modal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+            if (galleryReturnFocus) galleryReturnFocus.focus();
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !document.getElementById('image-modal').classList.contains('hidden')) closeModal();
+        });
+
+        // 4. Form Pemesanan Kirim ke WhatsApp
+        function sendToWhatsApp(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('buyerName').value;
+            const phone = document.getElementById('buyerPhone').value;
+            const orderType = document.getElementById('orderType').value;
+            const material = document.getElementById('materialType').value;
+            const details = document.getElementById('orderDetails').value;
+
+            // Format Pesan WA
+            const waNumber = "6281347384598"; // Ganti dengan nomor WA Usaha Anda
+            let message = `Halo Nisan & Batur Amanah, saya ingin melakukan pemesanan/konsultasi:%0A%0A`;
+            message += `*Nama:* ${encodeURIComponent(name)}%0A`;
+            message += `*No. HP/WA:* ${encodeURIComponent(phone)}%0A`;
+            message += `*Jenis Pesanan:* ${encodeURIComponent(orderType)}%0A`;
+            message += `*Bahan Material:* ${encodeURIComponent(material)}%0A`;
+            if (details) {
+                message += `*Detail/Catatan:* ${encodeURIComponent(details)}%0A`;
+            }
+            message += `%0AMohon info estimasi waktu & harga. Terima kasih.`;
+
+            // Redirect ke WA
+            window.open(`https://wa.me/${waNumber}?text=${message}`, '_blank');
+        }
+    </script>
+</body>
+</html>
